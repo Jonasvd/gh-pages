@@ -3,27 +3,65 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="style/main.css">
-        <title>Coming soon</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+        <script src="scripts/SPACE-1.1.0.js"></script>
+        <title>Template</title>
     </head>
     <body>
         <header class="container-fluid header">
             <div class="container">
-                <div class="title"><h3>Jonasvd.GitHub.io</h3></div>
+                <div class="row">
+                    <div class="col-xs-12 title">
+                        <!-- TODO hamburger menu > visible-xs is deprecated as of v3.2.0!
+                        <h3>
+                            <i class="fa fa-bars visible-xs" aria-hidden="true"></i>
+                        </h3>
+                        -->
+                        <h3 class="pull-right">Jonasvd.GitHub.io</h3>
+                    </div>
+                    <nav class="col-xs-12">
+                        <a href="#"         class="visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" 
+                           data-bind="css: { active: isActiveMainTab('')       }">Home    </a>
+                    </nav>
+                </div>
             </div>
         </header>
 
         <div class="container content">
-			<div class="row">
-				<div class="col-sm-8 col-sm-offset-2">
-					<h1>Coming soon!</h1>
-					<p><h3>This site will be coming soon.. (maybe).</h3>
-					<p><h3>I'm still looking for some bugs ;)</h3>
-					<p><img src="media/hideAndSeek.jpg"/>
-					<br>(image by <a href="https://www.teepublic.com/t-shirt/1253006-hide-and-seek-champion-since-1960-semicolon-white">teepublic.com</a>)
-				</div>
-			</div>
+            <div class="row">
+
+                <!-- Start of sub navigation -->
+                <div class="col-xs-12 col-md-3" data-bind="visible: showSubmenu()">
+                    <div id="page-subnav">
+                        <ul data-bind="foreach: subMenu">
+                            <li>
+                                <a data-bind="text: text, attr: { href: url }, css: { active: indexViewModel.isActivePage(url)  }"></a>
+                                <ul data-bind="visible: sub, foreach: sub">
+                                    <li><a data-bind="text: text, attr: { href: url }, css: { active: indexViewModel.isActivePage(url)  }"></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+                <!-- End of sub navigation -->
+
+                <!-- Start of page loading -->
+                <div id="page-loading" class="col-xs-12" data-bind="visible: pageIsLoading(), css: contentWidth">
+                    <i class="fa fa-circle-o-notch fa-spin"></i>
+                    <br />Loading...
+                </div>
+                <!-- End of page loading -->
+
+                <!-- Start of page content -->
+                <div id="page-content" class="col-xs-12" data-bind="visible: !pageIsLoading(), css: contentWidth, html: pageContent">
+                </div>
+                <!-- End of page content -->
+            </div>
         </div>
 
         <footer class="footer">
@@ -31,5 +69,10 @@
                 Jonasvd &copy; 2017
             </div>
         </footer>
+
+        <!-- Start of scripts -->
+        <script src="scripts/viewmodels/index.viewmodel.js"></script>
+        <script src="scripts/SPACE.setup.js"></script>
+        <!-- End of scripts -->
     </body>
 </html>

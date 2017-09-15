@@ -7,7 +7,7 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .footer {
@@ -15,36 +15,76 @@ body {
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
-    height: 60px;
+    height: 40px;
 }
 
-/* Custom style
+/* Header style
 -------------------------------------------------- */
 .header {
     background-color: #c00000;
     color: white;
+    padding: 0;
 }
 
 .header .container .title {
-    text-align: right;
-    width: 100%;
+    padding: 10px 15px;
 }
 
 .header .container .title h3 {
     font-weight: bold;
-}
-
-.header .container nav {
-    color: #FF9B9B;
-}
-
-.header .container nav h3 {
+    margin: 0;
     display: inline-block;
-    margin: 0 7px 10px 7px;
 }
+
+.header .container nav a:link, .header .container nav a:visited {
+    /*display: inline-block;*/
+    margin: 0 7px 10px 7px;
+    /*color: #FF9B9B;*/color: #FFDDDD;
+    text-decoration: none;
+    font-size: larger;
+}
+
+.header .container nav a:hover, .header .container nav a.active {
+    color: white;
+    text-decoration: none;
+}
+
+.header .container nav a.active {
+    font-weight: bolder;
+}
+
+.header .container nav a:active {
+    /*display: inline-block;*/
+    margin: 0 7px 10px 7px;
+    color: #FF9B9B;
+    text-decoration: none;
+}
+
+/* Content style
+-------------------------------------------------- */
 
 .content {
     height: auto;
+    padding-top: 10px;
+}
+
+.content #page-subnav {
+    padding: 4px 7px;
+}
+
+.content #page-subnav ul { /* from https://alistapart.com/article/taminglists */
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+.content #page-subnav ul li:before {
+    content: "\0BB \020"; /* >> followed by space */
+}
+
+.content #page-subnav ul li a.active {
+    font-weight: bold;
 }
 
 .content #page-loading {
@@ -53,20 +93,18 @@ body {
 }
 
 .content #page-loading i {
-    font-size: 36px;
+    font-size: large;
 }
+
+.content #page-content img {
+    max-width: 100%;
+}
+
+/* Footer style
+-------------------------------------------------- */
 
 .footer {
     background-color: #dddddd;
-    padding: 20px 0px;
+    padding: 10px 0px;
     text-align: center;
-}
-
-h1 {
-	color: #c00000;
-	font-weight: bolder;
-}
-
-img {
-	max-width: 100%;
 }
