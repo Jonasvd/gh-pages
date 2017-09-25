@@ -23,8 +23,8 @@ space.setup = function (setup) {
     };
 
     var loadSubMenu = function (hash) {
-        // 'page/another/page' to 'page' 
-        var page = hash.split('/')[0];
+        // 'page/another/page' to 'page/' 
+        var page = hash.split('/')[0] + '/';
         var url = downloadUrl(page, 'submenu.json');
         $.ajax({
             url: url,
