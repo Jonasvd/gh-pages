@@ -23,7 +23,9 @@ space.setup = function (setup) {
     };
 
     var loadSubMenu = function (hash) {
-        var url = downloadUrl(hash, 'submenu.json');
+        // 'page/another/page' to 'page' 
+        var page = hash.split('/')[0];
+        var url = downloadUrl(page, 'submenu.json');
         $.ajax({
             url: url,
             success: function (data) {
